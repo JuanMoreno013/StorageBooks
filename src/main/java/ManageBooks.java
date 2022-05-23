@@ -1,8 +1,10 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class ManageBooks {
 
+   ///// BOOK /////
     AddBook adBook = new AddBook();
     PrintBooks ptBook = new PrintBooks();
     RemoveBook rmBook = new RemoveBook();
@@ -11,6 +13,13 @@ public class ManageBooks {
     AddMegazine adMag = new AddMegazine();
     PrintMagazines ptMagazin = new PrintMagazines();
     RemoveMagazines rmMagazin = new RemoveMagazines();
+
+    /////// LETTER///
+
+    AddLetter adLet = new AddLetter();
+    PrintLetter ptLet = new PrintLetter();
+    RemoveLetter rmLet = new RemoveLetter();
+
 
 public void Books(){
 
@@ -50,15 +59,31 @@ public void Books(){
 
         //ptMagazin.displayAll(megarr);
 
-
-
-    }
-
-//    public void MagazineNew()
+        //    public void MagazineNew()
 //    {
-//
-//
 //      // String StMagazine= (title, author)-> title + author;
 //
 //    }
+    }
+
+    public void Letters(){
+
+    int remove = 0;
+
+    ArrayList <Letter> arrLet = new ArrayList<>();
+
+        String title = "Good bye", author= "Federico Valverde";
+        int npages= 5;
+        LocalDate date = LocalDate.parse("2022-09-01");
+
+        System.out.println(" \n Storage of Letters: " );
+        adLet.add(arrLet,title,author,npages, date );
+        adLet.add(arrLet, "Strange", "Kristov Ruud", 3, LocalDate.now());
+
+        ptLet.displayAll(arrLet);
+        rmLet.remove(arrLet, remove);
+        //ptLet.displayAll(arrLet);
+
+    }
+
 }
