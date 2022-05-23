@@ -8,6 +8,7 @@ public class Library  {
         mgbook.Books();
         mgbook.Magazines();
         mgbook.Letters();
+
     }
        //b new Book (title, author, subject, id, pages, "free");
 
