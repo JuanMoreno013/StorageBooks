@@ -5,15 +5,7 @@ public class AddMegazine implements OpeMag {
 
 
     @Override
-    public void opera(ArrayList<Megazine> megAd) {
-
-    }
-
-    @Override
     public void add(ArrayList<Megazine> megAd, String title, String author, int npages, int volume) {
-        // 1
-
-
 
         if ( title == null || title.isBlank()  ){
             try {
@@ -33,7 +25,6 @@ public class AddMegazine implements OpeMag {
 }
 
  interface OpeMag {
-    public void opera(ArrayList<Megazine> megAd);
 
     public void add(ArrayList<Megazine> megAd, String title, String author, int npages, int volume);
 }

@@ -11,7 +11,7 @@ public class RemoveBook implements ItemOpe{
     }
 
     @Override
-    public void opera(ArrayList<Book> adb, int selectIndex) {
+    public void opera(ArrayList<Book> adb, int selectIndex){
 
         if( adb == null || adb.size()==0 )
         {
@@ -23,19 +23,21 @@ public class RemoveBook implements ItemOpe{
         }
         else
         {
-                    remove(adb, selectIndex);
+                remove(adb, selectIndex);
         }
     }
 
-    public void remove(ArrayList<Book> adb, int selectIndex){
+    public void remove(ArrayList<Book> adb, int selectIndex) {
 
-        try {
+        if (adb.size() < selectIndex) {
+            try {
+                throw new BookException(" \n Fail! Your put something wrong, there is not enough books ");
+            } catch (Exception e) {
+                System.out.println(e.getMessage() + "");
+            }
+        }else {
             adb.remove(selectIndex);
-
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println(e.getMessage() + "");
         }
-
 
     }
 

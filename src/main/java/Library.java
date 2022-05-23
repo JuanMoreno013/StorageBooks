@@ -6,6 +6,7 @@ public class Library  {
         ManageBooks mgbook = new ManageBooks();
 
         mgbook.Books();
+        mgbook.Magazines();
     }
        //b new Book (title, author, subject, id, pages, "free");
 

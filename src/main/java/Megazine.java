@@ -26,7 +26,7 @@ public class Megazine extends ItemOp{
         return
                 "\n Title: " + getTitle() +
                 "\n Volume: " + getVolume() +
-                "\n " + super.toString();
+                 super.toString();
     }
 
 
