@@ -29,8 +29,4 @@ public class Megazine extends ItemOp{
                  super.toString();
     }
 
-
-    //    if(title== ){
-//
-//    }
 }

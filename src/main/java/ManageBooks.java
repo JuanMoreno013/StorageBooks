@@ -10,6 +10,7 @@ public class ManageBooks {
     /////// MAGAZINES///
     AddMegazine adMag = new AddMegazine();
     PrintMagazines ptMagazin = new PrintMagazines();
+    RemoveMagazines rmMagazin = new RemoveMagazines();
 
 public void Books(){
 
@@ -32,7 +33,7 @@ public void Books(){
 
     public void Magazines()
     {
-        int remove = 5;
+        int remove = 4;
 
         var megarr= new ArrayList<Megazine>();
 
@@ -45,6 +46,10 @@ public void Books(){
         adMag.add(megarr, "Cloud Mega", "Van Basteen Lud", 54, 9);
 
         ptMagazin.displayAll(megarr);
+        rmMagazin.remove(megarr, remove);
+
+        //ptMagazin.displayAll(megarr);
+
 
 
     }
