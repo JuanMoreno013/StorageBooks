@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ManageBooks {
 
@@ -44,7 +43,7 @@ public void Books(){
     {
         int remove = 4;
 
-        var megarr= new ArrayList<Megazine>();
+        var megarr= new ArrayList<Magazine>();
 
 
         String title = "Topic Asus", author= "Maximilian Zeel";
