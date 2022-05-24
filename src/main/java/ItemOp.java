@@ -1,20 +1,30 @@
+import java.time.LocalDate;
+
 public class ItemOp {
 
-    private static int pages;
-    private static String author;
+    private final int pages;
+    private final String author;
+    private final String title;
+    private final LocalDate dateWrite;
 
-    public ItemOp(String author , int pages){
+
+
+    public ItemOp(String title, String author , int pages, LocalDate dateWrite){
+        this.title = title;
         this.author = author;
         this.pages = pages;
+        this.dateWrite = dateWrite;
     }
 
-    public static String getAuthor() {
-        return author;
-    }
+    public String getTitle() {return title;}
 
-    public static int getPages() {
+    public String getAuthor() {return author;}
+
+    public int getPages() {
         return pages;
     }
+
+    public LocalDate getDateWrite() {return dateWrite;}
 
     public String toString() {
         return

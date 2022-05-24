@@ -1,7 +1,7 @@
 
-public class Library  {
+public class Main {
 
-    Library lib = new Library();
+    Main lib = new Main();
     public static void main(String[] args) {
         ManageBooks mgbook = new ManageBooks();
 
