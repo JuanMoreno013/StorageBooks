@@ -3,24 +3,24 @@ import java.time.LocalDate;
 public class Letter extends ItemOp {
 
 
-    private final String title;
-    private final LocalDate dateWrite;
+    private final String subject;
+    private final String place;
 
 
-    public Letter(String title, String author, int pages, LocalDate dateWrite) {
-        super(author, pages);
-        this.title = title;
-        this.dateWrite = dateWrite;
+    public Letter(String title, String author, int pages, LocalDate dateWrite, String subject, String place) {
+        super(title, author, pages, dateWrite);
+        this.subject = subject;
+        this.place = place;
 
     }
-
-    public String getTitle() {return title;}
-    public LocalDate getDateWrite() {return dateWrite;}
+    public String getSubject() {return subject;}
+    public String getPlace() {return place;}
 
     public String toString() {
         return
-                 "\n Title: " + getTitle() +
-                 "\n Date: " + getDateWrite() +
-                 super.toString();
+                 super.toString()+
+                 "\n Subject: " + getSubject() +
+                 "\n Place: " + getPlace();
+
     }
 }

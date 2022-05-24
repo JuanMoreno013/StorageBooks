@@ -1,71 +1,32 @@
+import java.time.LocalDate;
 
-public class Book {
+public class Book extends ItemOp {
 
-    private String author;
-    private String title;
     private String id;
     private String subject;
     private String status;
-    private int numberOfPages;
+    private String editorial;
 
-    public Book() {} //Constructor
+    public Book(String title, String author, int pages, LocalDate dateWrite, String subject, String id, String editorial, String status) {
+        super(title, author, pages, dateWrite);
 
-    public Book(String title, String author, String subject, String id, int numberOfPages, String status) {
-        this.title= title;
-        this.author= author;
         this.subject= subject;
         this.id= id;
-        this.numberOfPages= numberOfPages;
+        this.editorial= editorial;
         this.status= status;
     }
-    public String getAuthor() {return author;}
-    public void setAuthor(String author) {this.author = author;}
-
-    public String getTitle() {return title;}
-    public void setTitle(String title) {this.title = title;}
 
     public String getId() {return id;}
-    public void setId(String id) {this.id = id;}
-
-    public int getNumberOfPages() {return numberOfPages;}
-    public void setNumberOfPages(int numberOfPages) {this.numberOfPages = numberOfPages;}
-
     public String getSubject() {return subject;}
-    public void setSubject(String subject) {this.subject = subject;}
-
     public String getStatus() {return status;}
-    public void setStatus(String status) {this.status = status;}
-
-
+    public String getEditorial() {return editorial;}
 
     public String toString() {
-        return "\n Name: " + getTitle() +
-                "\n Author: " + getAuthor() +
+        return
+                super.toString()+
                 "\n Subject: " + getSubject() +
                 "\n ISBN: " + getId() +
-                "\n Pages: " + getNumberOfPages() +
+                "\n Editorial: " + getEditorial() +
                 "\n Status: " + getStatus();
     }
-    //    private BookFormat type;
-
-
-
-
-//    @Override
-//    public void add() {
-//
-//    }
-//
-//    @Override
-//    public void remove() {
-//
-//    }
 }
-
-
-
-//interface Item {
-//    void print();
-//    void add();
-//    void remove();
-//}

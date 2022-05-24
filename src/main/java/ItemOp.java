@@ -8,7 +8,6 @@ public class ItemOp {
     private final LocalDate dateWrite;
 
 
-
     public ItemOp(String title, String author , int pages, LocalDate dateWrite){
         this.title = title;
         this.author = author;
@@ -28,7 +27,9 @@ public class ItemOp {
 
     public String toString() {
         return
+                "\n Title: " + getTitle() +
                 "\n Author: " + getAuthor() +
-                "\n Pages: " + getPages() ;
+                "\n Pages: " + getPages() +
+                "\n Date: " + getDateWrite() ;
     }
 }
