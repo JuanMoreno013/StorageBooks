@@ -1,11 +1,8 @@
 import java.time.LocalDate;
 
 public class Letter extends ItemOp {
-
-
     private final String subject;
     private final String place;
-
 
     public Letter(String title, String author, int pages, LocalDate dateWrite, String subject, String place) {
         super(title, author, pages, dateWrite);

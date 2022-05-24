@@ -2,10 +2,10 @@ import java.time.LocalDate;
 
 public class Book extends ItemOp {
 
-    private String id;
-    private String subject;
-    private String status;
-    private String editorial;
+    private final String id;
+    private final String subject;
+    private final String status;
+    private final String editorial;
 
     public Book(String title, String author, int pages, LocalDate dateWrite, String subject, String id, String editorial, String status) {
         super(title, author, pages, dateWrite);
