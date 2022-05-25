@@ -8,8 +8,10 @@ public class Book extends ItemOp {
     private final String editorial;
 
     public Book(String title, String author, int pages, LocalDate dateWrite, String subject, String id, String editorial, String status) {
+
         super(title, author, pages, dateWrite);
 
+        validate(id,subject,status,editorial);
         this.subject= subject;
         this.id= id;
         this.editorial= editorial;

@@ -10,7 +10,7 @@ public class Magazine extends ItemOp{
     public Magazine(String title, String author, int pages, LocalDate dateWrite, String subject, int volume, String editorial )
     {
         super(title, author, pages, dateWrite);
-
+        validate(subject,editorial);
         this.volume=volume;
         this.subject=subject;
         this.editorial=editorial;

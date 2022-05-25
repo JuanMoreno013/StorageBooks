@@ -6,6 +6,7 @@ public class Letter extends ItemOp {
 
     public Letter(String title, String author, int pages, LocalDate dateWrite, String subject, String place) {
         super(title, author, pages, dateWrite);
+        validate(subject,place);
         this.subject = subject;
         this.place = place;
 
@@ -18,6 +19,5 @@ public class Letter extends ItemOp {
                  super.toString()+
                  "\n Subject: " + getSubject() +
                  "\n Place: " + getPlace();
-
     }
 }

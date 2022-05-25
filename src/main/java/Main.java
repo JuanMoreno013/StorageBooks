@@ -65,6 +65,7 @@ public class Main {
 
         ManageLib mngLib = new ManageLib();
         var print = new PrintLib<>();
+
         //int index= 3;
 
         System.out.println(" All items ");
@@ -77,7 +78,6 @@ public class Main {
         mngLib.add(lt2);
         print.displayAll(mngLib.itemsLib);
 
-
         System.out.println(" Remove some items");
         System.out.println(" Only 4 items");
 
@@ -85,8 +85,6 @@ public class Main {
         mngLib.RemoveSingle(mg2);   //Delete object select
 
         print.displayAll(mngLib.itemsLib);
-
-
 
 //        System.out.println(" Only 4 items");
 //

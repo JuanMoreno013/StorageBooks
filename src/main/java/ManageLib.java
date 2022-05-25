@@ -8,13 +8,8 @@ public class ManageLib implements OpManagItem<ItemOp>{
     public void remove(ItemOp item, int selectIndex) {
 
         if( item == null || itemsLib.size()==0 )
-
         {
-            try {
-                throw new BookException("There are not enough items in the library at present");
-            } catch (BookException e) {
-                System.out.println("Something went wrong!" + e.getMessage());
-            }
+                System.out.println("There are not enough items in the library at present");
         }
         else
         {
@@ -25,11 +20,7 @@ public class ManageLib implements OpManagItem<ItemOp>{
     private void removeLi(int selectIndex) {
 
         if (itemsLib.size() < selectIndex) {
-            try {
-                throw new BookException(" \n Fail! Your put something wrong, there is not enough items ");
-            } catch (Exception e) {
-                System.out.println(e.getMessage() + "");
-            }
+                System.out.println(" \n Fail! Your put something wrong, there is not enough items ");
         }else {
             itemsLib.remove(selectIndex);
         }
@@ -37,16 +28,7 @@ public class ManageLib implements OpManagItem<ItemOp>{
 
     @Override
     public void add(ItemOp objItem) {
-
-        if ( objItem == null || objItem.getTitle().isBlank() || objItem.getAuthor().isBlank() || objItem.getPages()<0 ){
-            try {
-                throw new BookException(" \n Fail! Your put something wrong, you can not put values null or empty ");
-            } catch (BookException e) {
-                System.out.println("Something went wrong! " + e.getMessage());
-            }
-        } else {
-            itemsLib.add(objItem); //Add the obj to the list
-        }
+        itemsLib.add(objItem); //Add the obj to the list
     }
 
     @Override
@@ -58,18 +40,5 @@ public class ManageLib implements OpManagItem<ItemOp>{
             }
         }
     }
-
-//    public void RemoveSingle( T obj) {
-//
-//        for ( ItemOp item: itemsLib) {
-//            if (item.getClass() == obj.getClass()) {
-//                itemsLib.remove(obj);
-//                break;
-////                System.out.println(
-////                        (item.toString() + " \n "));
-//            }
-//        }
-//
-//    }
 
 }
