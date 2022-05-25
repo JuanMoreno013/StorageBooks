@@ -64,7 +64,7 @@ public class Main {
         ////
 
         ManageLib mngLib = new ManageLib();
-        var print = new PrintLib();
+        var print = new PrintLib<>();
         //int index= 3;
 
         System.out.println(" All items ");

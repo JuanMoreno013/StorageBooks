@@ -3,9 +3,9 @@ import java.time.LocalDate;
 public class Magazine extends ItemOp{
 
 
-    private int volume;
-    private String subject;
-    private String editorial;
+    private final int volume;
+    private final String subject;
+    private final String editorial;
 
     public Magazine(String title, String author, int pages, LocalDate dateWrite, String subject, int volume, String editorial )
     {
