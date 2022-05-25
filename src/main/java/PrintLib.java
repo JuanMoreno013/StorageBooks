@@ -1,15 +1,22 @@
 import java.util.List;
-import java.util.Objects;
+
 
 public class PrintLib<T> {
 
     public void displayAll(List<ItemOp> objtItem)
     {
-        for ( ItemOp items: objtItem) {
-            System.out.println(
-                    //"\n Name: " + magazines.getTitle() +
-                    (items.toString() + " \n "));
-//            System.out.println();
+        if( objtItem == null || objtItem.size()==0 )
+        {
+            try {
+                throw new BookException("There are no items in the library at present");
+            } catch (BookException e) {
+                System.out.println("Something went wrong!" + e.getMessage());
+            }
+        } else {
+            for ( ItemOp items: objtItem) {
+                System.out.println(
+                        (items.toString() + " \n "));
+            }
         }
     }
 
@@ -17,14 +24,10 @@ public class PrintLib<T> {
 
             for ( ItemOp item: objtItem) {
                 if (item.getClass() == obj.getClass()) {
-                    //objtItem.remove(obj);
                     System.out.println(
-                            //"\n Name: " + magazines.getTitle() +
                             (item.toString() + " \n "));
                 }
-//            System.out.println();
             }
-//        }
-
     }
+
 }

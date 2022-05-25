@@ -65,7 +65,7 @@ public class Main {
 
         ManageLib mngLib = new ManageLib();
         var print = new PrintLib();
-        int index= 3;
+        //int index= 3;
 
         System.out.println(" All items ");
 
@@ -81,10 +81,11 @@ public class Main {
         System.out.println(" Remove some items");
         System.out.println(" Only 4 items");
 
-        mngLib.remove(b1,index);
-        mngLib.remove(b1,0);
+        mngLib.remove(b1,0); //Delete by index
+        mngLib.RemoveSingle(mg2);   //Delete object select
 
         print.displayAll(mngLib.itemsLib);
+
 
 
 //        System.out.println(" Only 4 items");

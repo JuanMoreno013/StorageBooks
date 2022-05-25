@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ManageLib implements OpManagItem<ItemOp>{
 
@@ -9,6 +10,7 @@ public class ManageLib implements OpManagItem<ItemOp>{
     public void remove(ItemOp item, int selectIndex) {
 
         if( item == null || itemsLib.size()==0 )
+
         {
             try {
                 throw new BookException("There are not enough items in the library at present");
@@ -48,5 +50,28 @@ public class ManageLib implements OpManagItem<ItemOp>{
             itemsLib.add(objItem); //Add the obj to the list
         }
     }
+
+    @Override
+    public void RemoveSingle(ItemOp objItem) {
+        for ( ItemOp item: itemsLib) {
+            if (item.getClass() == objItem.getClass()) {
+                itemsLib.remove(objItem);
+                break;
+            }
+        }
+    }
+
+//    public void RemoveSingle( T obj) {
+//
+//        for ( ItemOp item: itemsLib) {
+//            if (item.getClass() == obj.getClass()) {
+//                itemsLib.remove(obj);
+//                break;
+////                System.out.println(
+////                        (item.toString() + " \n "));
+//            }
+//        }
+//
+//    }
 
 }
