@@ -41,4 +41,12 @@ public class ManageLib implements OpManagItem<ItemOp>{
         }
     }
 
+    @Override
+    public void removeAll(ItemOp item) {
+        if(item != null)
+            itemsLib.clear();
+        else
+            System.out.println(" \n There is not items available ");
+    }
+
 }

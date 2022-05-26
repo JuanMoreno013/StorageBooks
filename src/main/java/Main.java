@@ -61,12 +61,10 @@ public class Main {
                 "History",
                 "Luxembourg");
 
-        ////
+        ////////
 
         ManageLib mngLib = new ManageLib();
         var print = new PrintLib<>();
-
-        //int index= 3;
 
         System.out.println(" All items ");
 
@@ -81,34 +79,28 @@ public class Main {
         System.out.println(" Remove some items");
         System.out.println(" Only 4 items");
 
-        mngLib.remove(b1,0); //Delete by index
-        mngLib.RemoveSingle(mg2);   //Delete object select
+        mngLib.remove(b1,0); //Delete by index from all items
+        mngLib.RemoveSingle(mg2);   //Delete specific object select
 
         print.displayAll(mngLib.itemsLib);
 
-//        System.out.println(" Only 4 items");
-//
-//        print.displayAll(mngLib.itemsLib);
-
-        //mngLib.remove(b1,1);
-
-//        System.out.println(" After to delete ");
-//        print.displayAll(mngLib.itemsLib);
-
-        //mngLib.add(lt2);
-
-
         System.out.println(" Only Books ");
-
         print.DisplaySingle(mngLib.itemsLib, b1);
 
         System.out.println(" Only letters ");
-
         print.DisplaySingle(mngLib.itemsLib, lt1);
 
         System.out.println(" Only Magazines");
+        print.DisplaySingle(mngLib.itemsLib, mg2);
 
-        print.DisplaySingle(mngLib.itemsLib, mg1);
+        System.out.println(" Items ");
+        print.displayAll(mngLib.itemsLib);
+
+        mngLib.removeAll(b1); //Remove all items
+
+        System.out.println(" Items after to delete ");
+        print.displayAll(mngLib.itemsLib);
+
     }
 
 }
