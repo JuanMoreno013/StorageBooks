@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public abstract class ItemOp {
 
@@ -11,7 +11,7 @@ public abstract class ItemOp {
 
     public ItemOp(String title, String author , int pages, LocalDate dateWrite){
 
-        validate(title, author, dateWrite);
+        validate(title, author, pages, dateWrite);
 
         this.title = title;
         this.author = author;
@@ -24,7 +24,7 @@ public abstract class ItemOp {
     public int getPages() {return pages;}
     public LocalDate getDateWrite() {return dateWrite;}
 
-     public void validate(Object... arrayOfObj){
+     public void ValidationP(Object... arrayOfObj){
        // array.foreach -> validate.
          //if (obj == null) ??
         for (Object obj: arrayOfObj) {
@@ -33,7 +33,21 @@ public abstract class ItemOp {
             }
         }
      }
+    private void validate(String title, String author , int pages, LocalDate dateWrite) {
+        ValidationP(title, author, dateWrite);
 
+        if (title.isBlank())
+            throw new IllegalArgumentException(" Blank title");
+
+        if (author.isBlank())
+            throw new IllegalArgumentException(" Author Blank");
+
+        if (dateWrite.isAfter(LocalDate.now()))
+            throw new IllegalArgumentException("Date wrong");
+
+        if (pages < 1)
+        throw new IllegalArgumentException( "Error Pages! ");
+    }
     public String toString() {
         return
                 "\n Title: " + getTitle() +

@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         ///// BOOK /////
-        LocalDate date = LocalDate.parse("2022-09-01");
+        LocalDate date = LocalDate.parse("2022-01-01");
 
          Book b1 = new Book("Preparing bool",
                 "Nikki Lauda",
@@ -50,14 +50,14 @@ public class Main {
         var lt1 = new Letter( "Good bye",
                 "Fedreick Valverde",
                 3,
-                LocalDate.parse("2022-09-01"),
+                LocalDate.parse("2022-01-01"),
                 "Important",
                 "Guadalajara, Jal");
 
         var lt2 = new Letter( "Rockstar",
                 "Wuelerti Moon",
                 5,
-                LocalDate.parse("2022-09-01"),
+                LocalDate.parse("2022-05-01"),
                 "History",
                 "Luxembourg");
 

@@ -10,12 +10,37 @@ public class Book extends ItemOp {
     public Book(String title, String author, int pages, LocalDate dateWrite, String subject, String id, String editorial, String status) {
 
         super(title, author, pages, dateWrite);
-
         validate(id,subject,status,editorial);
+
         this.subject= subject;
         this.id= id;
         this.editorial= editorial;
         this.status= status;
+    }
+
+    public void ValidationP(Object... arrayOfObj){
+        // array.foreach -> validate.
+        //if (obj == null) ??
+        for (Object obj: arrayOfObj) {
+            if (obj == null) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+    private void validate(String subject, String id, String editorial, String status) {
+        ValidationP(id, subject, status, editorial);
+
+        if (subject.isBlank())
+            throw new IllegalArgumentException("Book: Blank Subject");
+
+        if (status.isBlank())
+            throw new IllegalArgumentException("Book: Status is Blank");
+
+        if (id.isBlank())
+            throw new IllegalArgumentException("Book: ISBN es Blank ");
+
+        if (editorial.isBlank())
+            throw new IllegalArgumentException("Book: Editorial is Blank");
     }
 
     public String getId() {return id;}

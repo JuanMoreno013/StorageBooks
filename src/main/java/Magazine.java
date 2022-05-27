@@ -10,12 +10,34 @@ public class Magazine extends ItemOp{
     public Magazine(String title, String author, int pages, LocalDate dateWrite, String subject, int volume, String editorial )
     {
         super(title, author, pages, dateWrite);
-        validate(subject,editorial);
+        validate(subject,volume, editorial);
+
         this.volume=volume;
         this.subject=subject;
         this.editorial=editorial;
     }
 
+    public void ValidationP(Object... arrayOfObj){
+        // array.foreach -> validate.
+        //if (obj == null) ??
+        for (Object obj: arrayOfObj) {
+            if (obj == null) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+    private void validate(String subject, int volume, String editorial) {
+        ValidationP(subject, volume, editorial);
+
+        if (subject.isBlank())
+            throw new IllegalArgumentException("Magazine: Blank Subject");
+
+        if (editorial.isBlank())
+            throw new IllegalArgumentException(" Magazine: Blank Editorial");
+
+        if (volume < 1)
+            throw new IllegalArgumentException("Magazine: Volume Less than 1");
+    }
     public int getVolume() {
         return volume;
     }

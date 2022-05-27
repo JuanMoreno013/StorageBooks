@@ -9,7 +9,6 @@ public class PrintLib<T> {
                         (items.toString() + " \n "));
             }
     }
-
       public void DisplaySingle(List<ItemOp> objtItem, T obj) {
               for ( ItemOp item: objtItem) {
                   if (item.getClass() == obj.getClass()) {
