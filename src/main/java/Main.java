@@ -79,7 +79,7 @@ public class Main {
         System.out.println(" Remove some items");
         System.out.println(" Only 4 items");
 
-        mngLib.remove(b1,0); //Delete by index from all items
+        mngLib.remove(0); //Delete by index from all items
         mngLib.RemoveSingle(mg2);   //Delete specific object select
 
         print.displayAll(mngLib.itemsLib);
