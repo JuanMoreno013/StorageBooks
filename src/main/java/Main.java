@@ -74,32 +74,31 @@ public class Main {
         mngLib.add(mg1);
         mngLib.add(lt1);
         mngLib.add(lt2);
-        print.displayAll(mngLib.itemsLib);
+        print.displayAll(mngLib.getAll());
 
         System.out.println(" Remove some items");
         System.out.println(" Only 4 items");
 
         mngLib.remove(0); //Delete by index from all items
-        mngLib.RemoveSingle(mg2);   //Delete specific object select
 
-        print.displayAll(mngLib.itemsLib);
+        print.displayAll(mngLib.getAll());
 
         System.out.println(" Only Books ");
-        print.DisplaySingle(mngLib.itemsLib, b1);
+        print.DisplaySingle(mngLib.getAll(), b1);
 
         System.out.println(" Only letters ");
-        print.DisplaySingle(mngLib.itemsLib, lt1);
+        print.DisplaySingle(mngLib.getAll(), lt1);
 
         System.out.println(" Only Magazines");
-        print.DisplaySingle(mngLib.itemsLib, mg2);
+        print.DisplaySingle(mngLib.getAll(), mg2);
 
         System.out.println(" Items ");
-        print.displayAll(mngLib.itemsLib);
+        print.displayAll(mngLib.getAll());
 
         mngLib.removeAll(b1); //Remove all items
 
         System.out.println(" Items after to delete ");
-        print.displayAll(mngLib.itemsLib);
+        print.displayAll(mngLib.getAll());
 
     }
 

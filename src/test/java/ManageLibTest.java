@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManageLibTest {
-    ManageLib manLib = new ManageLib();
+    private ManageLib manLib = new ManageLib();
 
 //    ArrayList<ItemOp> itemsLib = new ArrayList<>();
 
@@ -51,10 +51,10 @@ class ManageLibTest {
 //        System.out.println("Before");
         manLib = new ManageLib();
 
-        manLib.itemsLib.add(b1);
-        manLib.itemsLib.add(b2);
-        manLib.itemsLib.add(mg2);
-        manLib.itemsLib.add(mg1);
+        manLib.add(b1);
+        manLib.add(b2);
+        manLib.add(mg2);
+        manLib.add(mg1);
     }
 
         ///////REMOVE ////
@@ -79,24 +79,15 @@ class ManageLibTest {
     @Test
     @DisplayName(" Remove All items , Remove all the items from the list, when the list are not null")
     void removeAll() {
-        assertNotNull(manLib.itemsLib);
         manLib.removeAll(mg1);
+        assertEquals(0, manLib.getAll().size());
     }
     @Test
     @DisplayName(" Remove All items 2, throw exception, when the item are null")
     void removeAll2() {
         assertThrows(NullPointerException.class, () -> manLib.removeAll(null));
     }
-    @Test
-    @DisplayName("Remove single item, throws exception, when you try to remove a single element that are null")
-    void removeSingle() {
-        assertThrows(NullPointerException.class, ()-> manLib.RemoveSingle(null));
-    }
-    @Test
-    @DisplayName("Remove single item 2, remove a specific item, when the object are not null")
-    void removeSingle2() {
-        manLib.RemoveSingle(b1);
-    }
+
      //////// ADD ////////
     @Test
     @DisplayName("Add Item, add item to the list, when the item are not null")
@@ -108,19 +99,9 @@ class ManageLibTest {
     void add2() {
         assertThrows(NullPointerException.class, () -> manLib.add(null));
     }
-    @Test
-    @DisplayName("Add Items3 , keep the list as it was, when the item are null ")
-    void add3() {
-        var firstsize = manLib.itemsLib.size();
-        manLib.itemsLib.add(null);
-        var backSize = manLib.itemsLib.size();
-
-        assertEquals(firstsize,backSize-1);
-    }
-
     @AfterEach
     public void destroyItems() {
-        manLib.itemsLib.clear();
+        manLib.clear();
         manLib=null;
     }
 
