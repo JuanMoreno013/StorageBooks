@@ -4,12 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManageLibTest {
-    private ManageLib manLib = new ManageLib();
+    private ManageLib manLib = new ManageLib(Repositories.HASH_REPO);
 
 //    ArrayList<ItemOp> itemsLib = new ArrayList<>();
 
@@ -49,7 +48,7 @@ class ManageLibTest {
     @DisplayName("Initialize Objects to test")
     public void initItems(){
 //        System.out.println("Before");
-        manLib = new ManageLib();
+        manLib = new ManageLib(Repositories.HASH_REPO);
 
         manLib.add(b1);
         manLib.add(b2);

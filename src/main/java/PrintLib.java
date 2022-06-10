@@ -2,22 +2,30 @@ import java.util.List;
 
 public class PrintLib<T> {
 
-   // Repository<ItemOp> repository;
-
-    public void displayAll(List<ItemOp> objtItem)
+    public void displayAll(List<ItemOp> objtItem)  //Print all the elements in the list
     {
             for ( ItemOp items: objtItem) {
                 System.out.println(
-                        (items.toString() + " \n "));
+                        (items.toString() ));
             }
     }
       public void DisplaySingle(List<ItemOp> objtItem, T obj) {  //Print for Category
               for ( ItemOp item: objtItem) {
                   if (item.getClass() == obj.getClass()) {
                       System.out.println(
-                              (item.toString() + " \n "));
+                              (item + " \n "));
                   }
               }
+      }
+
+      public void printSearch(ItemOp item)   //print the first element that it search
+      {
+              System.out.println("Found! " + item + "\n");
+      }
+
+      public void printCountElements(int cElements)
+      {
+          System.out.println( " \n There is : " + cElements + " elements");
       }
 
 }

@@ -19,8 +19,6 @@ public class Book extends ItemOp {
     }
 
     public void ValidationP(Object... arrayOfObj){
-        // array.foreach -> validate.
-        //if (obj == null) ??
         for (Object obj: arrayOfObj) {
             if (obj == null) {
                 throw new IllegalArgumentException();

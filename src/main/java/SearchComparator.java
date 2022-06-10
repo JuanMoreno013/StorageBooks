@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class SearchComparator {
+
+public class SearchComparator {
+
 }
