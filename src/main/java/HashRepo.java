@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HashRepo <E> implements Repository<E>{
                     //id
@@ -9,13 +6,12 @@ public class HashRepo <E> implements Repository<E>{
 
 
     @Override
-    public E get(int id) {
-        return mapRepo.get(id);
+    public Optional<E> get(int id) {
+        return Optional.ofNullable(mapRepo.get(id));
     }
 
     @Override
     public List<E> getAll() {
-
         return new ArrayList<>(mapRepo.values());
     }
 
@@ -32,4 +28,5 @@ public class HashRepo <E> implements Repository<E>{
     public void clear() {
         mapRepo.clear();
     }
+
 }
