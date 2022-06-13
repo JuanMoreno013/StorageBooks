@@ -7,33 +7,40 @@ public class ManageLib<K> implements OpManagItem<K>{
 
 //    private final Repository<ItemOp> repository = new HashRepo<>();
     private final Search<ItemOp> search = new Search<>();
-    private Repository<K, ItemOp> repository2;// = new TreeRepo<>();
+    private final Repository<K, ItemOp> repository2;// = config repo use
 
     Function<ItemOp, ? extends Comparable<K>> keyFunction;
 
     /**
      * Select
      */
-    public ManageLib(Repositories type,  Function<ItemOp, ? extends Comparable<K>> key ) {
-        switch (type) {
-            case HASH_REPO:
-                this.repository2 = new HashRepo<>();
-                this.keyFunction = key;
-            case TREE_REPO:
-                this.repository2 = new TreeRepo<>();
-                this.keyFunction = key;
-        }
+//    public ManageLib(Repositories type,  Function<ItemOp, ? extends Comparable<K>> key ) {
+//        switch (type) {
+//            case HASH_REPO:
+//                this.repository2 = new HashRepo<>();
+//                this.keyFunction = key;
+//            case TREE_REPO:
+//                this.repository2 = new TreeRepo<>();
+//                this.keyFunction = key;
+//        }
+//    }
+
+    public ManageLib(Repository<K, ItemOp> repository, Function<ItemOp, ? extends Comparable<K>> key) {
+
+            if (key==null)
+                throw new NullPointerException();
+
+            this.repository2 = repository;
+            this.keyFunction = key;
+
     }
 
     @Override
     public void remove(Comparable<K> key) {
-//        if (repository2.getAll().size() < selectIndex || selectIndex<0) {
-//            System.out.println(" \n Fail! Your put something wrong, there is not enough items ");
-//            throw new IndexOutOfBoundsException();
-//        }else {
-            repository2.remove(key);
-//        }
+        if (key==null)
+            throw new NullPointerException();
 
+        repository2.remove(key);
     }
 
     @Override
@@ -87,7 +94,9 @@ public class ManageLib<K> implements OpManagItem<K>{
 
 }
 
-enum Repositories {
-    HASH_REPO,
-    TREE_REPO
-}
+
+//enum Repositories
+//{
+//    HASH_REPO,
+//    TREE_REPO
+//}

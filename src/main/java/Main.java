@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.TreeMap;
 import java.util.function.Function;
@@ -67,18 +68,12 @@ public class Main {
 
         ////////
 
-
-
-//        Comparator<Object> comparator = (obj1, obj2) -> ((String) obj1).compareTo(((String) obj2));
-//        new TreeMap<>(comparator);
-
-
         // Put the type of the key to compare
 
         Function<ItemOp, ? extends Comparable<String>> key = ItemOp::getTitle;
 
 
-        ManageLib<String> mngLib = new ManageLib<>(Repositories.HASH_REPO, key);
+        ManageLib<String> mngLib = new ManageLib<>(new HashRepo<>(), key);
 
         var print = new PrintLib<>();
 
@@ -94,8 +89,7 @@ public class Main {
 
         print.displayAll(mngLib.getAll());
 
-//         mngLib.searchTitle("Good bye L1"); //SearchByTitle
-//        mngLib.searchTitle("Good bye L1").ifPresent(print::printSearch);
+
 
         mngLib.searchTitle("Machine Learning B2")
                 .ifPresentOrElse(

@@ -17,11 +17,16 @@ public class TreeRepo<K,E> implements Repository<K,E>{
 
     @Override
     public void add(Comparable<K> key, E item) {
+        if (item == null)
+            throw new NullPointerException();
+
         mapTreeRepo.put(key,item);
     }
 
     @Override
     public void remove(Comparable<K> key) {
+        if (key ==null)
+            throw new NullPointerException();
         mapTreeRepo.remove(key);
     }
     @Override
