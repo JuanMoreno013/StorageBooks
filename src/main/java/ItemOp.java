@@ -16,7 +16,7 @@ public abstract class ItemOp {
 
         validate(title, author, pages, dateWrite);
 
-        this.id= nextId++;//randomNumber();
+        this.id= nextId++;
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -30,8 +30,6 @@ public abstract class ItemOp {
     public LocalDate getDateWrite() {return dateWrite;}
 
      public void ValidationP(Object... arrayOfObj){
-       // array.foreach -> validate.
-         //if (obj == null) ??
         for (Object obj: arrayOfObj) {
             if (obj == null) {
                 throw new IllegalArgumentException();

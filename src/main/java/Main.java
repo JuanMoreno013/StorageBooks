@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.function.Function;
 
 public class Main {
 
@@ -32,7 +33,7 @@ public class Main {
 
         /////// MAGAZINES///
 
-        Magazine mg1 = new Magazine( "Machine Learning B2",
+        Magazine mg1 = new Magazine( "Machine Learning M1",
                 "Van Basteen Luud",
                 16,
                 LocalDate.now(),
@@ -66,7 +67,19 @@ public class Main {
 
         ////////
 
-        ManageLib mngLib = new ManageLib(Repositories.TREE_REPO);
+
+
+//        Comparator<Object> comparator = (obj1, obj2) -> ((String) obj1).compareTo(((String) obj2));
+//        new TreeMap<>(comparator);
+
+
+        // Put the type of the key to compare
+
+        Function<ItemOp, ? extends Comparable<String>> key = ItemOp::getTitle;
+
+
+        ManageLib<String> mngLib = new ManageLib<>(Repositories.HASH_REPO, key);
+
         var print = new PrintLib<>();
 
         System.out.println(" All items ");
@@ -79,7 +92,7 @@ public class Main {
 
         mngLib.add(lt2);
 
-//        print.displayAll(mngLib.getAll());
+        print.displayAll(mngLib.getAll());
 
 //         mngLib.searchTitle("Good bye L1"); //SearchByTitle
 //        mngLib.searchTitle("Good bye L1").ifPresent(print::printSearch);
@@ -89,9 +102,6 @@ public class Main {
                         print::printSearch,
                         () -> System.out.println("Not Found! ")
                 );
-
-        Comparator<Object> comparator = (obj1, obj2) -> ((String) obj1).compareTo(((String) obj2));
-        new TreeMap<>(comparator);
 
         System.out.println("\n Show the number the elements that exists: ");
         print.printCountElements(mngLib.count());
@@ -103,40 +113,34 @@ public class Main {
                 () -> System.out.println("Not Found! ")
         );
 
-        System.out.println("\n Show all the items with that value: ");
-         print.displayAll(mngLib.searchAllElements("Machine Learning B2"));  //Display all the elements with that value
-
+//        System.out.println("\n Show all the items with that value: ");
+//         print.displayAll(mngLib.searchAllElements("Machine Learning B2"));  //Display all the elements with that value
+//
 //        System.out.println( "There is : " + mngLib.count() + "");
-//        System.out.println(" Remove some items");
-//        System.out.println(" Only 4 items");
+        System.out.println(" Remove some items");
+        System.out.println(" Only 5 items");
 //
-//        mngLib.remove(0); //Delete by index from all items
+        mngLib.remove("Machine Learning B2");
 //
-//        print.displayAll(mngLib.getAll());
+        print.displayAll(mngLib.getAll());
 //
-//        System.out.println(" Only Books ");
-//        print.DisplaySingle(mngLib.getAll(), b1);
+        System.out.println(" \n Only Books ");
+        print.DisplaySingle(mngLib.getAll(), b1);
 //
-//        System.out.println(" Only letters ");
-//        print.DisplaySingle(mngLib.getAll(), lt1);
+        System.out.println(" \n Only letters ");
+        print.DisplaySingle(mngLib.getAll(), lt1);
 //
-//        System.out.println(" Only Magazines");
-//        print.DisplaySingle(mngLib.getAll(), mg2);
+        System.out.println(" Only Magazines");
+        print.DisplaySingle(mngLib.getAll(), mg2);
 //
-//        System.out.println(" Items ");
-//        print.displayAll(mngLib.getAll());
-//
-//        mngLib.removeAll(b1); //Remove all items
-//
-//        System.out.println(" Items after to delete ");
-//        print.displayAll(mngLib.getAll());
-//
-//
-//        Optional<ItemOp> item = mngLib.get(mg1.getId());
-//        if (item.isPresent())
-//            System.out.println("Found: \n" + item.get());
-//        else
-//            System.out.println("No ta");
+        System.out.println(" \n Items ");
+        print.displayAll(mngLib.getAll());
+
+        mngLib.removeAll(b1); //Remove all items
+
+        System.out.println(" \n Items after to delete ");
+        print.displayAll(mngLib.getAll());
+
     }
 
 }

@@ -1,12 +1,13 @@
 import java.util.*;
 
-public class TreeRepo<E> implements Repository<E>{
+public class TreeRepo<K,E> implements Repository<K,E>{
 
-    private final Map< Integer, E> mapTreeRepo = new TreeMap<>();
+    private final Map< Comparable<K>, E> mapTreeRepo = new TreeMap<>();
+
 
     @Override
-    public Optional<E> get(int id) {
-        return Optional.ofNullable(mapTreeRepo.get(id));
+    public Optional<E> get(Comparable<K> key) {
+        return Optional.ofNullable(mapTreeRepo.get(key));
     }
 
     @Override
@@ -15,13 +16,13 @@ public class TreeRepo<E> implements Repository<E>{
     }
 
     @Override
-    public void add(int id, E item) {
-        mapTreeRepo.put(id,item);
+    public void add(Comparable<K> key, E item) {
+        mapTreeRepo.put(key,item);
     }
 
     @Override
-    public void remove(int id) {
-        mapTreeRepo.remove(id);
+    public void remove(Comparable<K> key) {
+        mapTreeRepo.remove(key);
     }
     @Override
     public void clear() {

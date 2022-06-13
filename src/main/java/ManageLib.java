@@ -1,39 +1,45 @@
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class ManageLib implements OpManagItem<ItemOp>{
+public class ManageLib<K> implements OpManagItem<K>{
 
 //    private final Repository<ItemOp> repository = new HashRepo<>();
     private final Search<ItemOp> search = new Search<>();
-    private Repository<ItemOp> repository2;// = new TreeRepo<>();
+    private Repository<K, ItemOp> repository2;// = new TreeRepo<>();
+
+    Function<ItemOp, ? extends Comparable<K>> keyFunction;
 
     /**
      * Select
      */
-    public ManageLib(Repositories type) {
+    public ManageLib(Repositories type,  Function<ItemOp, ? extends Comparable<K>> key ) {
         switch (type) {
             case HASH_REPO:
                 this.repository2 = new HashRepo<>();
+                this.keyFunction = key;
             case TREE_REPO:
                 this.repository2 = new TreeRepo<>();
+                this.keyFunction = key;
         }
     }
 
     @Override
-    public void remove(int selectIndex) {
+    public void remove(Comparable<K> key) {
+//        if (repository2.getAll().size() < selectIndex || selectIndex<0) {
+//            System.out.println(" \n Fail! Your put something wrong, there is not enough items ");
+//            throw new IndexOutOfBoundsException();
+//        }else {
+            repository2.remove(key);
+//        }
 
-        if (repository2.getAll().size() < selectIndex || selectIndex<0) {
-            System.out.println(" \n Fail! Your put something wrong, there is not enough items ");
-            throw new IndexOutOfBoundsException();
-        }else {
-            repository2.remove(selectIndex);
-        }
     }
+
     @Override
     public void add(ItemOp objItem) {
         Objects.requireNonNull(objItem);
-        repository2.add(objItem.getId(), objItem); //Add the obj to the list
+        repository2.add(keyFunction.apply(objItem), objItem);
     }
 
     public List<ItemOp> getAll() {
@@ -52,9 +58,9 @@ public class ManageLib implements OpManagItem<ItemOp>{
         repository2.clear();
     }
 
-    public Optional<ItemOp> get(int id)
+    public Optional<ItemOp> get(Comparable<K> key)
     {
-        return repository2.get(id);
+        return repository2.get(key);
     }
 
     public Optional<ItemOp> searchTitle (String title)

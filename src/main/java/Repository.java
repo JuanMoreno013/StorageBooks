@@ -1,11 +1,11 @@
 import java.util.List;
 import java.util.Optional;
 
-public interface Repository<E> {
-    Optional<E> get(int id);
+public interface Repository<K,E> {
+    Optional<E> get(Comparable<K> key);
     List<E> getAll();
-    void add(int id, E item);
-    void remove(int id);
+    void add(Comparable<K> key, E item);  //add comparable <K>
+    void remove(Comparable<K> key);
     void clear();
 
 }
