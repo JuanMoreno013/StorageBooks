@@ -20,12 +20,11 @@ public class PrintLib<T> {
 
       public void printSearch(ItemOp item)   //print the first element that it search
       {
-              System.out.println("Found! " + item + "\n");
+              System.out.println("\n Found! " + item + "\n");
       }
 
       public void printCountElements(int cElements)
       {
           System.out.println( " \n There is : " + cElements + " elements");
       }
-
 }

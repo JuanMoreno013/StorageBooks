@@ -12,18 +12,8 @@ public class ManageLib<K> implements OpManagItem<K>{
     Function<ItemOp, ? extends Comparable<K>> keyFunction;
 
     /**
-     * Select
+     * Select the implementation of Repository which are going to use
      */
-//    public ManageLib(Repositories type,  Function<ItemOp, ? extends Comparable<K>> key ) {
-//        switch (type) {
-//            case HASH_REPO:
-//                this.repository2 = new HashRepo<>();
-//                this.keyFunction = key;
-//            case TREE_REPO:
-//                this.repository2 = new TreeRepo<>();
-//                this.keyFunction = key;
-//        }
-//    }
 
     public ManageLib(Repository<K, ItemOp> repository, Function<ItemOp, ? extends Comparable<K>> key) {
 
@@ -55,11 +45,21 @@ public class ManageLib<K> implements OpManagItem<K>{
 
     @Override
     public void removeAll(ItemOp item) {
-        if(item != null)
-            repository2.clear();
-        else
+        if(item == null)
             throw new NullPointerException();
+
+        repository2.clear();
     }
+
+    @Override
+    public void removeI(ItemOp item) {
+
+        if (item==null)
+            throw new NullPointerException();
+
+        repository2.remove(item);
+    }
+
 
     public void clear() {
         repository2.clear();

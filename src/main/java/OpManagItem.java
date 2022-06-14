@@ -5,6 +5,8 @@ public interface OpManagItem<K> {
 //     void RemoveSingle(T item);
      void removeAll(ItemOp item);
 
+     void removeI(ItemOp item);
+
 }
 
 
