@@ -1,11 +1,11 @@
-import java.text.SimpleDateFormat;
+
 import java.util.Collection;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class Search <E extends ItemOp>{
 
@@ -14,14 +14,14 @@ public class Search <E extends ItemOp>{
     {
        return element.size();
     }
-    public Optional<E> searchName(String title, Collection<E> elements)
+    public Optional<E> searchName(String title, Collection<E> element)
     {
-        return getItem(title, elements);
-    }
+        if (title==null)
+            throw new NullPointerException();
 
+        if (title.isEmpty())
+            throw new IllegalArgumentException();
 
-    public Optional<E> getItem(String title, Collection<E> element)
-    {
         return element.stream()
                 .filter(entry -> title.equals(entry.getTitle()))
                 .findFirst();
@@ -30,6 +30,8 @@ public class Search <E extends ItemOp>{
     public Optional<E> searchElement (Object obj, Collection<E> elements)
     {
 
+        if (obj==null)
+            throw new NullPointerException();
 
         Predicate<ItemOp> itemPredicate = d-> obj.equals(d.getTitle());
         Predicate<ItemOp> namePredicate = d-> obj.equals(d.getAuthor());
@@ -40,12 +42,21 @@ public class Search <E extends ItemOp>{
 
         return elements.stream()
                 .filter(itemPredicate.or(namePredicate).or(pagePredicate).or(datePredicate))
-                .collect(Collectors.toList()).stream().findFirst();
+                .collect(Collectors.toList())
+                .stream()
+                .findFirst();
     }
 
 
     public List<E> searchFullElements (Object obj, Collection<E> elements)
     {
+
+        if (obj==null)
+            throw new NullPointerException();
+
+        if (obj.toString().isBlank())
+            throw new IllegalArgumentException();
+
 
 
         Predicate<ItemOp> titleActive = e -> obj.equals(e.getTitle());
