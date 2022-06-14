@@ -29,33 +29,12 @@ public class Search <E extends ItemOp>{
 
     public Optional<E> searchElement (Object obj, Collection<E> elements)
     {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:ms");
-//        Date date;
-//
-//        if (obj.equals(dateFormat))
-//        {
-//            String newDate = obj;
-////            Date newDate = obj;
-////           Date date = dateFormat.format(newDate);
-//            Date date = dateFormat.parse(obj);
-//
-//        }
-
-//        dateFormat.setLenient(false);
-//        try {
-//
-//        } catch (ParseException pe) {
-//            return false;
-//        }
-
-//        String newstring = new SimpleDateFormat("yyyy-MM-dd").format(obj);
 
 
-        // Note that you shouldn't normally use == on objects
         Predicate<ItemOp> itemPredicate = d-> obj.equals(d.getTitle());
         Predicate<ItemOp> namePredicate = d-> obj.equals(d.getAuthor());
         Predicate<ItemOp> pagePredicate = d-> obj.equals(d.getPages());
-        Predicate<ItemOp> datePredicate = d-> obj.equals(d.getDateWrite()); //Not works yet
+        Predicate<ItemOp> datePredicate = d-> obj.equals(d.getDateWrite());
 
 
 
@@ -71,7 +50,7 @@ public class Search <E extends ItemOp>{
 
         Predicate<ItemOp> titleActive = e -> obj.equals(e.getTitle());
         Predicate<ItemOp> namePredicate = d-> obj.equals(d.getAuthor());
-        Predicate<ItemOp> datePredicate = d-> obj.equals(d.getDateWrite()); //Not works yet
+        Predicate<ItemOp> datePredicate = d-> obj.equals(d.getDateWrite());
         Predicate<ItemOp> pagePredicate = d-> obj.equals(d.getPages());
 
         return elements.stream()
