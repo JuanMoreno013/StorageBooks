@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Consumer;
 
 public class TreeRepo<K,E> implements Repository<K,E>{
 
@@ -29,6 +30,22 @@ public class TreeRepo<K,E> implements Repository<K,E>{
             throw new NullPointerException();
         mapTreeRepo.remove(key);
     }
+
+    @Override
+    public void remove(E item) {
+        if (item==null)
+            throw new NullPointerException();
+
+       Consumer<Comparable<K>> consumer = mapTreeRepo::remove;
+       mapTreeRepo.entrySet()
+               .stream()
+                .filter(entry -> entry.getValue().equals(item))
+                .map(Map.Entry::getKey)
+               .findFirst()
+               .ifPresentOrElse(consumer, () -> { throw new IllegalArgumentException(); });
+
+    }
+
     @Override
     public void clear() {
         mapTreeRepo.clear();

@@ -6,6 +6,7 @@ public interface Repository<K,E> {
     List<E> getAll();
     void add(Comparable<K> key, E item);  //add comparable <K>
     void remove(Comparable<K> key);
+    void remove(E item);
     void clear();
 
 }
