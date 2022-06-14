@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testng.Assert;
-
+import org.junit.jupiter.api.Assertions;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +25,7 @@ public class BookTest {
     @Test
     @DisplayName("Book 2, throw exception, when at least 1 characteristic are wrong")
     void Book2() {
-        Assert.assertThrows(IllegalArgumentException.class,
+        assertThrows(IllegalArgumentException.class,
                 () -> new Book("  ", "asd", 34, LocalDate.now(), "asd", "asd", "qwd", "old")
         );
     }
@@ -43,12 +42,4 @@ public class BookTest {
 //                ()->assertEquals(str2, result));
     }
 
-
-//    @Test
-//    @DisplayName("Expect null ")
-//    void Book3() {
-//        Assert.assertThrows(" sd ", IllegalArgumentException.class,
-//                () -> new Book(null, " ", 3, LocalDate.now(), "  ", " ",  null, " ")
-//        );
-//    }
 }
