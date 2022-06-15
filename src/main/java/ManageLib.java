@@ -1,50 +1,102 @@
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ManageLib implements OpManagItem<ItemOp>{
+public class ManageLib<K> implements OpManagItem<K>{
 
-     ArrayList<ItemOp> itemsLib = new ArrayList<>();
+//    private final Repository<ItemOp> repository = new HashRepo<>();
+    private final Search<ItemOp> search = new Search<>();
+    private final Repository<K, ItemOp> repository2;// = config repo use
+
+    Function<ItemOp, ? extends Comparable<K>> keyFunction;
+
+    /**
+     * Select the implementation of Repository which are going to use
+     */
+
+    public ManageLib(Repository<K, ItemOp> repository, Function<ItemOp, ? extends Comparable<K>> key) {
+
+            if (key==null)
+                throw new NullPointerException();
+
+            this.repository2 = repository;
+            this.keyFunction = key;
+
+    }
 
     @Override
+    public void remove(Comparable<K> key) {
+        if (key==null)
+            throw new NullPointerException();
 
-    public void remove(int selectIndex) {
-
-        if (itemsLib.size() < selectIndex || selectIndex<0) {
-            System.out.println(" \n Fail! Your put something wrong, there is not enough items ");
-            throw new IndexOutOfBoundsException();
-        }else {
-            itemsLib.remove(selectIndex);
-        }
+        repository2.remove(key);
     }
+
     @Override
     public void add(ItemOp objItem) {
         Objects.requireNonNull(objItem);
-        itemsLib.add(objItem); //Add the obj to the list
+        repository2.add(keyFunction.apply(objItem), objItem);
     }
 
-    @Override
-    public void RemoveSingle(ItemOp objItem) {
-        if (objItem != null )
-        {
-            for ( ItemOp item: itemsLib) {
-                if (item.getClass() == objItem.getClass()) {
-                    itemsLib.remove(objItem);
-                    break;
-                }
-            }
-        } else {
-            throw new NullPointerException(" The item are null ");
-        }
-
-
+    public List<ItemOp> getAll() {
+        return repository2.getAll();
     }
 
     @Override
     public void removeAll(ItemOp item) {
-        if(item != null)
-            itemsLib.clear();
-        else
+        if(item == null)
             throw new NullPointerException();
+
+        repository2.clear();
+    }
+
+    @Override
+    public void removeI(ItemOp item) {
+
+        if (item==null)
+            throw new NullPointerException();
+
+        repository2.remove(item);
+    }
+
+
+    public void clear() {
+        repository2.clear();
+    }
+
+    public Optional<ItemOp> get(Comparable<K> key)
+    {
+        return repository2.get(key);
+    }
+
+    public Optional<ItemOp> searchTitle (String title)
+    {
+       return search.searchName(title, repository2.getAll());
+    }
+
+
+    public int count()
+    {
+        return search.countElem(repository2.getAll());
+//        return repository2.countElements();
+    }
+
+    public Optional<ItemOp> searchElement (Object element)
+    {
+        return search.searchElement(element , repository2.getAll());
+    }
+
+    public List<ItemOp> searchAllElements (Object element)
+    {
+        return search.searchFullElements(element , repository2.getAll());
     }
 
 }
+
+
+//enum Repositories
+//{
+//    HASH_REPO,
+//    TREE_REPO
+//}

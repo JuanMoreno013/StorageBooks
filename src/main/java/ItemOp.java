@@ -3,30 +3,33 @@ import java.time.LocalDate;
 
 public abstract class ItemOp {
 
+    private final int id ;
     private final int pages;
     private final String author;
     private final String title;
     private final LocalDate dateWrite;
+
+    private static int nextId = 1;
 
 
     public ItemOp(String title, String author , int pages, LocalDate dateWrite){
 
         validate(title, author, pages, dateWrite);
 
+        this.id= nextId++;
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.dateWrite = dateWrite;
     }
 
+    public int getId(){return id;}
     public String getTitle() {return title;}
     public String getAuthor() {return author;}
     public int getPages() {return pages;}
     public LocalDate getDateWrite() {return dateWrite;}
 
      public void ValidationP(Object... arrayOfObj){
-       // array.foreach -> validate.
-         //if (obj == null) ??
         for (Object obj: arrayOfObj) {
             if (obj == null) {
                 throw new IllegalArgumentException();
@@ -46,7 +49,7 @@ public abstract class ItemOp {
             throw new IllegalArgumentException("Date wrong");
 
         if (pages < 1)
-        throw new IllegalArgumentException( "Error Pages! ");
+            throw new IllegalArgumentException( "Error Pages! ");
     }
     public String toString() {
         return
